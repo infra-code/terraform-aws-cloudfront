@@ -152,7 +152,7 @@ variable "cloudfront_viewer_certificate_ssl_support_method" {
 #--------------------------------------------------------------
 # Route53 Variables
 #--------------------------------------------------------------
-variable "route53_hosted_zone_id" {
+variable "route53_zone_id" {
   type = string
 }
 
