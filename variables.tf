@@ -111,19 +111,19 @@ variable "cloudfront_price_class" {
 variable "cloudfront_restrictions_enabled" {
   type        = bool
   description = "Whether the distribution is restricting access to your content based on the geographic location of your viewers."
-  default     = false
+  default     = true
 }
 
 variable "cloudfront_restrictions_geo_restriction_locations" {
   type        = string
   description = "The ISO 3166-1-alpha-2 codes for which you want CloudFront either to distribute your content (whitelist) or not distribute your content (blacklist)"
-  default     = ""
+  default     = "US"
 }
 
 variable "cloudfront_restrictions_geo_restriction_restriction_type" {
   type        = string
   description = "The method that you want to use to restrict distribution of your content by country: none, whitelist, or blacklist"
-  default     = "blacklist"
+  default     = "whitelist"
 }
 
 variable "cloudfront_viewer_certificate_acm_certificate_arn" {
