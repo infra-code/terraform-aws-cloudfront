@@ -1,7 +1,7 @@
 resource "aws_cloudfront_distribution" "main" {
   price_class = var.cloudfront_price_class
 
-  aliases             = var.route53_root_domain == true ? [aws_route53_record.main.name, aws_route53_record.root.name] : [aws_route53_record.main.name]
+  aliases             = var.route53_root_domain == true ? [var.route53_domain_name, data.aws_route53_zone.main.name] : [var.route53_domain_name]
   is_ipv6_enabled     = var.cloudfront_is_ipv6_enabled
   comment             = var.cloudfront_comment
   default_root_object = var.cloudfront_default_root_object
