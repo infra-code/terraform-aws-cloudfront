@@ -3,7 +3,7 @@ resource "aws_cloudfront_distribution" "main" {
 
   aliases             = var.route53_root_domain == true ? [var.route53_domain_name, data.aws_route53_zone.main.name] : [var.route53_domain_name]
   is_ipv6_enabled     = var.cloudfront_is_ipv6_enabled
-  comment             = var.cloudfront_comment
+  comment             = var.service_name
   default_root_object = var.cloudfront_default_root_object
   enabled             = true
   wait_for_deployment = false
