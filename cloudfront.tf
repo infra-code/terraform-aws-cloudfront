@@ -40,12 +40,10 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   dynamic "restrictions" {
-    for_each = var.cloudfront_restrictions_enabled == true ? [1] : []
-
     content {
       geo_restriction {
-        restriction_type = var.cloudfront_restrictions_geo_restriction_restriction_type
-        locations        = split(",", var.cloudfront_restrictions_geo_restriction_locations)
+        restriction_type = var.cloudfront_restrictions_enabled == false ? var.cloudfront_restrictions_geo_restriction_restriction_type : "none"
+        locations        = length(var.cloudfront_restrictions_geo_restriction_locations) > 0 ? (split(",", var.cloudfront_restrictions_geo_restriction_locations) : []
       }
     }
   }
