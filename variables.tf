@@ -111,7 +111,7 @@ variable "cloudfront_price_class" {
 variable "cloudfront_restrictions_enabled" {
   type        = bool
   description = "Whether the distribution is restricting access to your content based on the geographic location of your viewers."
-  default     = true
+  default     = false
 }
 
 variable "cloudfront_restrictions_geo_restriction_locations" {
