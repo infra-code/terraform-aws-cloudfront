@@ -40,7 +40,7 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   dynamic "restrictions" {
-    for_each = var.cloudfront_restrictions_enabled == true && length(var.cloudfront_restrictions_geo_restriction_locations) > 0 ? [1] : []
+    for_each = var.cloudfront_restrictions_enabled == true ? [1] : []
 
     content {
       geo_restriction {

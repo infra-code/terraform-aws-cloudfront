@@ -117,13 +117,13 @@ variable "cloudfront_restrictions_enabled" {
 variable "cloudfront_restrictions_geo_restriction_locations" {
   type        = string
   description = "The ISO 3166-1-alpha-2 codes for which you want CloudFront either to distribute your content (whitelist) or not distribute your content (blacklist)"
-  default     = "US"
+  default     = ""
 }
 
 variable "cloudfront_restrictions_geo_restriction_restriction_type" {
   type        = string
   description = "The method that you want to use to restrict distribution of your content by country: none, whitelist, or blacklist"
-  default     = "whitelist"
+  default     = "none"
 }
 
 variable "cloudfront_viewer_certificate_acm_certificate_arn" {
