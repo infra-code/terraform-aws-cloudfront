@@ -1,11 +1,6 @@
 #--------------------------------------------------------------
 # AWS Variables
 #--------------------------------------------------------------
-variable "aws_account" {
-  type        = string
-  description = "AWS account alias name"
-}
-
 variable "aws_region" {
   type        = string
   description = "AWS Region"
