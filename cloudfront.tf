@@ -39,12 +39,10 @@ resource "aws_cloudfront_distribution" "main" {
     }
   }
 
-  dynamic "restrictions" {
-    content {
-      geo_restriction {
-        restriction_type = var.cloudfront_restrictions_enabled == false ? var.cloudfront_restrictions_geo_restriction_restriction_type : "none"
-        locations        = length(var.cloudfront_restrictions_geo_restriction_locations) > 0 ? (split(",", var.cloudfront_restrictions_geo_restriction_locations) : []
-      }
+  restrictions {
+    geo_restriction {
+      restriction_type = var.cloudfront_restrictions_enabled == false ? var.cloudfront_restrictions_geo_restriction_restriction_type : "none"
+      locations        = length(var.cloudfront_restrictions_geo_restriction_locations) > 0 ? (split(",", var.cloudfront_restrictions_geo_restriction_locations)) : []
     }
   }
 
