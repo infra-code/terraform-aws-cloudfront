@@ -11,7 +11,7 @@ resource "aws_cloudfront_distribution" "main" {
   default_cache_behavior {
     allowed_methods        = split(",", var.cloudfront_default_cache_behavior_allowed_methods)
     cached_methods         = split(",", var.cloudfront_default_cache_behavior_cached_methods)
-    target_origin_id       = "S3-${var.service_name}"
+    target_origin_id       = "S3-${var.service_name}-us-east-1"
     viewer_protocol_policy = var.cloudfront_default_cache_behavior_viewer_protocol_policy
     compress               = var.cloudfront_default_cache_behavior_compress
 
@@ -30,13 +30,13 @@ resource "aws_cloudfront_distribution" "main" {
 
   # Origin
   origin {
-      domain_name = var.cloudfront_origin_bucket_domain_name
-      origin_id   = "S3-${var.service_name}-us-east-1"
-      origin_path = "/${var.service_name}"
+    domain_name = var.cloudfront_origin_bucket_domain_name
+    origin_id   = "S3-${var.service_name}-us-east-1"
+    origin_path = "/${var.service_name}"
 
-      s3_origin_config {
-        origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
-      }
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
+    }
   }
 
   dynamic "restrictions" {
